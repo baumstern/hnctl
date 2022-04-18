@@ -4,7 +4,9 @@ Local Ethereum network node controlloer
 
 ## Install 
 
+```
 npm install -g hnctl
+```
 
 ## Getting Started
 
@@ -14,6 +16,8 @@ hnctl start
 hnctl restart
 
 hnctl destroy
+
+hnctl logs
 
 hnctl status
 ```
