@@ -2,12 +2,14 @@
   "name": "hnctl",
   "version": "0.0.1",
   "description": "Local Ethereum network node controller",
-  "main": "index.js",
+  "main": "build/src/index.js",
   "repository": "https://github.com/gurrpi/hnctl/",
   "author": "Daehyun Paik <paik@a30a.dev>",
   "license": "MIT",
   "private": false,
+  "type":"module",
   "devDependencies": {
+    "@types/argparse": "^2.0.10",
     "@types/node": "^17.0.25",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
@@ -20,11 +22,15 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,css,md}": "prettier --write src"
   },
   "scripts": {
     "start": "node build/src/index.js",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc --project tsconfig.json",
+    "build:watch": "tsc --watch --project tsconfig.json",
     "prepare": "husky install"
+  },
+  "dependencies": {
+    "argparse": "^2.0.1"
   }
 }
