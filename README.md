@@ -1,6 +1,6 @@
 # hnctl
 
-Local Ethereum network node controlloer
+Local Ethereum network node controller
 
 ## Install 
 
