@@ -1,6 +1,6 @@
 {
   "name": "hnctl",
-  "version": "0.0.2-canary.2",
+  "version": "0.0.2-canary.3",
   "description": "Local Ethereum network node controller",
   "main": "build/src/index.js",
   "repository": "https://github.com/gurrpi/hnctl/",
