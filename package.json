@@ -27,8 +27,8 @@
     "typescript": "^4.6.3"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write src"
+    "*.ts": "eslint --cache --fix",
+    "*.{ts,md}": "prettier --write src"
   },
   "scripts": {
     "start": "node build/src/index.js",

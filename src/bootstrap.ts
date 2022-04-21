@@ -25,7 +25,7 @@ function initCommands(): ArgumentParser {
         help: 'print logs of hardhat network',
     });
 
-    return parser
+    return parser;
 }
 
-export {initCommands}
+export { initCommands };

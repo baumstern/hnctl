@@ -1,13 +1,22 @@
-import {initCommands} from  './bootstrap.js'
+#!/usr/bin/env node
 
-const parser = initCommands()
+import { initCommands } from './bootstrap';
+
+async function startNode() {
+    const hardhat = await import('./node');
+    hardhat.hn();
+}
+
+process.chdir(__dirname);
+
+const parser = initCommands();
 // TODO: Move to bootstrap.ts
-const args = parser.parse_args()
+const args = parser.parse_args();
 const subCommand = args.subcommand;
 
 switch (subCommand) {
     case 'start':
-        console.log('Implement me!');
+        startNode();
         break;
     case 'restart':
         console.log('Implement me!');
