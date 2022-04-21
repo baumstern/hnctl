@@ -1,6 +1,6 @@
 {
   "name": "hnctl",
-  "version": "0.0.2-canary.9",
+  "version": "0.0.2-canary.10",
   "description": "Local Ethereum network node controller",
   "main": "build/src/index.js",
   "repository": "https://github.com/gurrpi/hnctl/",
@@ -8,9 +8,8 @@
   "license": "MIT",
   "private": false,
   "files": [
-    "build/",
-    "hardhat.config.js",
-    "README.md"
+    "build/**/*",
+    "hardhat.config.js"
   ],
   "bin": {
     "hnctl": "./build/src/index.js"
