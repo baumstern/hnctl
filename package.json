@@ -1,13 +1,12 @@
 {
   "name": "hnctl",
-  "version": "0.0.1",
+  "version": "0.0.2-canary.0",
   "description": "Local Ethereum network node controller",
   "main": "build/src/index.js",
   "repository": "https://github.com/gurrpi/hnctl/",
   "author": "Daehyun Paik <paik@a30a.dev>",
   "license": "MIT",
   "private": false,
-  "type":"module",
   "devDependencies": {
     "@types/argparse": "^2.0.10",
     "@types/node": "^17.0.25",
@@ -31,6 +30,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "argparse": "^2.0.1"
+    "@types/mocha": "^9.1.0",
+    "argparse": "^2.0.1",
+    "hardhat": "^2.9.3"
   }
 }
