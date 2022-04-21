@@ -1,12 +1,22 @@
 # hnctl
 
+[![npm version](https://badge.fury.io/js/hnctl.svg)](https://badge.fury.io/js/hnctl)
+
 Local Ethereum network node controller
 
-## Install 
+## Install
 
 ```
 npm install -g hnctl
 ```
+
+## TODO
+
+TODO for MVP:
+
+-   [ ] Run hardhat network background
+-   [ ] Restart hardhat network
+-   [ ] Destroy hardhat network
 
 ## Getting Started
 
@@ -21,7 +31,3 @@ hnctl logs
 
 hnctl status
 ```
-
-
-TODO
-* Import this: https://github.com/NomicFoundation/hardhat/blob/master/packages/hardhat-core/src/internal/hardhat-network/provider/node.ts
