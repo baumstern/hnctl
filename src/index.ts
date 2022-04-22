@@ -2,10 +2,26 @@
 
 import { initCommands } from './bootstrap';
 
+import { fork } from 'child_process';
+import { pid } from 'process';
+import { createWriteStream } from 'fs';
+
 async function startNode() {
-    const hardhat = await import('./node');
-    hardhat.hn();
+    console.log('Launching hardhat network... ✨');
+    console.log(
+        'The hardhat network will listening the port 8545 in the background... 👂',
+    );
+    const logStream = createWriteStream('./log');
+
+    logStream.on('open', () => {
+        fork(__dirname + '/node', {
+            detached: true,
+            stdio: ['ipc', logStream, logStream],
+        });
+    });
 }
+
+console.log(`This process is pid ${pid}`);
 
 process.chdir(__dirname);
 
