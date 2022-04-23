@@ -15,9 +15,6 @@ function initCommands(): ArgumentParser {
     subParsers.add_parser('start', {
         help: 'start hardhat network',
     });
-    subParsers.add_parser('restart', {
-        help: 'restart hardhat network',
-    });
     subParsers.add_parser('destroy', {
         help: 'destroy hardhat network',
     });
