@@ -1,4 +1,4 @@
-import * as hardhat from 'hardhat';
+import { run } from 'hardhat';
 
 import { pid } from 'process';
 
@@ -18,6 +18,9 @@ export async function getBackgroundPID() {
 
 export async function runHardhatNetwork() {
     saveCurrentPID();
-    hardhat.run('node');
+    run('node');
+
+    // There might be delay to launch hardhat network in slow processor before closing cli process
+    // TODO: check if port is opened for hardhat network before terminate parent cli process
     process.disconnect();
 }
