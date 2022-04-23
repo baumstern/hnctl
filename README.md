@@ -12,7 +12,7 @@ npm install -g hnctl
 
 ## Getting Started
 
-Run hardhat network listens on port 8545:
+Run hardhat network background listens on port 8545:
 
 ```
 hnctl start
