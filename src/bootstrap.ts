@@ -1,5 +1,6 @@
 import { ArgumentParser } from 'argparse';
 
+// TODO: get version from package.json
 const version = '0.0.1';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,4 +1,4 @@
-# hnctl
+# hnctl ([hardhat network](https://hardhat.org/hardhat-network/) contoller)
 
 [![npm version](https://badge.fury.io/js/hnctl.svg)](https://badge.fury.io/js/hnctl)
 
@@ -10,24 +10,16 @@ Local Ethereum network node controller
 npm install -g hnctl
 ```
 
-## TODO
-
-TODO for MVP:
-
--   [ ] Run hardhat network background
--   [ ] Restart hardhat network
--   [ ] Destroy hardhat network
-
 ## Getting Started
+
+Run hardhat network listens on port 8545:
 
 ```
 hnctl start
+```
 
-hnctl restart
+Destroy:
 
+```
 hnctl destroy
-
-hnctl logs
-
-hnctl status
 ```
