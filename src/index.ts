@@ -4,32 +4,65 @@
 
 import { initCommands } from './bootstrap';
 
-import { fork } from 'child_process';
 import { createWriteStream } from 'fs';
+import { spawn } from 'child_process';
+import { checkPortStatus } from 'portscanner';
+
+const defaultPort = 8545;
+
+// TODO: follow the DRY principle
+function isPortClosed() {
+    return new Promise((resolve) => {
+        checkPortStatus(defaultPort, (_error, status) => {
+            let isPortClosed = false;
+            if (status === 'closed') {
+                isPortClosed = true;
+            }
+            resolve(isPortClosed);
+        });
+    });
+}
 
 async function startNode() {
     // Print info
-    console.log('Launching hardhat network...✨');
-    console.log(
-        'The hardhat network will listening the port 8545 in the background...👂',
-    );
+    console.log('Launching hardhat network...⚙️');
+
+    const isPortAvailable = await isPortClosed();
+    if (!isPortAvailable) {
+        console.log('Error: port ' + defaultPort + ' is not available...');
+        process.exit(1);
+    }
 
     // Log for Hardhat network process
     const logStream = createWriteStream('./log');
 
+    // TODO: Maintain child process status in persistent storage
     // Create new process
     logStream.on('open', () => {
-        fork(__dirname + '/node', {
+        const subProcess = spawn('node', [__dirname + '/node'], {
             detached: true,
-            stdio: ['ipc', logStream, logStream],
+            stdio: ['ignore', logStream, logStream, 'ipc'],
+        });
+
+        subProcess.on('disconnect', () => {
+            console.log('Created hardhat network listening on port 8545...✨');
+            // It enables this parent process exit (see: https://nodejs.org/api/child_process.html#optionsdetached)
+            subProcess.unref();
         });
     });
 }
 
 async function destroyNode() {
+    const isPortAvailable = await isPortClosed();
+    if (isPortAvailable) {
+        console.log('Error: port ' + defaultPort + ' is not in use...');
+        process.exit(1);
+    }
+
     const { getBackgroundPID } = await import('./node_utils');
     getBackgroundPID().then((pid) => {
         process.kill(pid);
+        console.log('Terminated hardhat network...✨');
     });
 }
 
